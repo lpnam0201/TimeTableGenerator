@@ -27,5 +27,34 @@ namespace TimeTableGenerator
         // Patterns
         public const char WeekEmptyValue = '_';
         public const char PeriodEmptyValue = '-';
+
+        // Write
+        public static readonly IReadOnlyList<ValueTuple<int, TimeOnly>> PeriodTimes 
+            = new List<ValueTuple<int, TimeOnly>>()
+            {
+                (1, new TimeOnly(6, 40, 0)),
+                (2, new TimeOnly(7, 30, 0)),
+                (3, new TimeOnly(8, 30, 0)),
+                (4, new TimeOnly(9, 40, 0)),
+                (5, new TimeOnly(10, 10, 0)),
+                (6, new TimeOnly(11, 00, 0)),
+                (7, new TimeOnly(12, 40, 0)),
+                (8, new TimeOnly(13, 30, 0)),
+                (9, new TimeOnly(14, 30, 0)),
+                (10, new TimeOnly(15, 20, 0)),
+                (11, new TimeOnly(16, 20, 0)),
+                (12, new TimeOnly(17, 10, 0))
+            };
+        public static readonly IReadOnlyList<ValueTuple<string, string>> WeekdayColumns
+            = new List<ValueTuple<string, string>>()
+            {
+                ("Thứ Hai", "C"),
+                ("Thứ Ba", "D"),
+                ("Thứ Tư", "E"),
+                ("Thứ Năm", "F"),
+                ("Thứ Sáu", "G"),
+            };
+        public const int PeriodRowStart = 3;
+        public const char WeekDayColumnStart = 'C';
     }
 }

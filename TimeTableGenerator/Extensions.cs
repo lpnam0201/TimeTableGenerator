@@ -18,5 +18,10 @@ namespace TimeTableGenerator
             var excelIndex = Utils.ExcelColumnToIndex(columnName);
             return itemArray[excelIndex.ToArrayIndex()];
         }
+
+        public static string ToPeriodTimeLabel(this TimeOnly time)
+        {
+            return $"{time.Hour}h:{time.Minute.ToString("00")}";
+        }
     }
 }
