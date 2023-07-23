@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "TimeTableGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "--FilePath \"C:\\Users\\lpnam\\Desktop\\Khoa-47.xls\" --SheetName \"149-TMQT47\""
+    }
+  }
+}

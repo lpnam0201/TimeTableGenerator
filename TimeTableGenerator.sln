@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTableGenerator", "TimeTableGenerator\TimeTableGenerator.csproj", "{9974E535-4B41-432B-B5D3-BA0044C9DD46}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeTableGeneratorTest", "TimeTableGeneratorTest\TimeTableGeneratorTest.csproj", "{FC84B4F8-B83C-4606-BA87-133D8EFFDAF2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9974E535-4B41-432B-B5D3-BA0044C9DD46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9974E535-4B41-432B-B5D3-BA0044C9DD46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9974E535-4B41-432B-B5D3-BA0044C9DD46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9974E535-4B41-432B-B5D3-BA0044C9DD46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC84B4F8-B83C-4606-BA87-133D8EFFDAF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC84B4F8-B83C-4606-BA87-133D8EFFDAF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC84B4F8-B83C-4606-BA87-133D8EFFDAF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC84B4F8-B83C-4606-BA87-133D8EFFDAF2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AECADA9C-08B8-4029-9A30-C42279BFC251}
+	EndGlobalSection
+EndGlobal
