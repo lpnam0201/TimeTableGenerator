@@ -39,5 +39,38 @@ namespace TimeTableGeneratorTest
                 "___4_67______________",
                 new List<int> { 4, 6, 7});
         }
+
+        [Test]
+        [TestCaseSource(nameof(FindRunsOfSameString_TestData))]
+        public void FindRunsOfSameString__ShouldReturnCorrectly(
+            IList<string> values, IList<(int, int)> expectedPairs)
+        {
+            var actual = Utils.FindRunsOfSameString(values);
+
+            CollectionAssert.AreEqual(expectedPairs, actual);
+        }
+
+        private static IEnumerable FindRunsOfSameString_TestData()
+        {
+            yield return new TestCaseData(
+                new List<string>
+                {
+                    "A",
+                    "A",
+                    "B",
+                    "C",
+                    "C",
+                    "C",
+                    "A",
+                    "A"
+                },
+                new List<(string, int, int)>
+                {
+                    ("A", 0, 1),
+                    ("B", 2, 2),
+                    ("C", 3, 5),
+                    ("A", 6, 7)
+                });
+        }
     }
 }

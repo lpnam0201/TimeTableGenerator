@@ -56,5 +56,10 @@ namespace TimeTableGenerator
             };
         public const int PeriodRowStart = 3;
         public const char WeekDayColumnStart = 'C';
+        public static readonly TimeSpan TimePerPeriod = new TimeSpan(0, 50, 0);
+        public const string PeriodWriteColumn = "B";
+
+        public const string LightGreen = "E2F0D9";
+        public const string Green = "70AD47";
     }
 }

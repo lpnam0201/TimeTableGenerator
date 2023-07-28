@@ -35,5 +35,36 @@ namespace TimeTableGenerator
 
             return toRealWorldInts.ToList();
         }
+
+        public static IList<(string, int, int)> FindRunsOfSameString(IList<string> values)
+        {
+            var result = new List<(string, int, int)>();
+            if (values.Count == 0)
+            {
+                return result;
+            }
+
+            var begin = 0;
+            var rangeValue = values[0];
+
+            for (int i = 0; i < values.Count; i++)
+            {
+                if (values[i] != rangeValue)
+                {
+                    result.Add((rangeValue, begin, i - 1));
+
+                    rangeValue = values[i];
+                    begin = i;
+                }
+
+                // Reached end, conclude range
+                if (i == values.Count - 1)
+                {
+                    result.Add((rangeValue, begin, i));
+                }
+            }
+
+            return result;
+        }
     }
 }
