@@ -8,6 +8,8 @@ namespace TimeTableGenerator
         public string FilePath { get; set; }
         [Option("SheetName", Required = true)]
         public string SheetName { get; set; }
+        [Option("DiscussionGroup", Required = true)]
+        public string DiscussionGroup { get; set; }
         [Option("GroupPeriods", Default = false)]
         public bool GroupPeriods { get; set; }
     }

@@ -7,6 +7,8 @@ namespace TimeTableGenerator.Processing
     {
         public void Write(string savePath, IList<Occurrence> occurrences, Options options)
         {
+            occurrences = FilterOccurrenceByDiscussionGroup(occurrences, options);
+
             using (var workbook = new XLWorkbook())
             {
                 var occurrencesByWeek = occurrences.GroupBy(x => x.Week);
@@ -197,6 +199,13 @@ namespace TimeTableGenerator.Processing
             var firstWeekdayColumn = Constants.WeekdayColumns.First().Item2;
             var lastWeekdayColumn = Constants.WeekdayColumns.Last().Item2;
             worksheet.Columns($"{firstWeekdayColumn}:{lastWeekdayColumn}").Width = 55;
+        }
+
+        private IList<Occurrence> FilterOccurrenceByDiscussionGroup(IList<Occurrence> occurrences, Options options)
+        {
+            return occurrences
+                .Where(x => string.IsNullOrEmpty(x.DiscussionGroup) || x.DiscussionGroup == options.DiscussionGroup)
+                .ToList();
         }
     }
 }
