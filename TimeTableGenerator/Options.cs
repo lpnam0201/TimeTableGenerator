@@ -1,4 +1,4 @@
-﻿using CommandLine;
+using CommandLine;
 
 namespace TimeTableGenerator
 {
@@ -8,7 +8,7 @@ namespace TimeTableGenerator
         public string FilePath { get; set; }
         [Option("SheetName", Required = true)]
         public string SheetName { get; set; }
-        [Option("DiscussionGroup", Required = true)]
+        [Option("DiscussionGroup", Required = false)]
         public string DiscussionGroup { get; set; }
         [Option("GroupPeriods", Default = false)]
         public bool GroupPeriods { get; set; }
