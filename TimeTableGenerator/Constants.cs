@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,12 +17,12 @@ namespace TimeTableGenerator
         public const string OrdinalNumberColumn = "A"; // Số thứ tự
         public const string SubjectIdColumn = "F"; // Lớp học phần
         public const string DiscussionGroupColumn = "H"; // Lớp học phần
-        public const string SubjectNameColumn = "J"; // Tên học phần
-        public const string SubjectTypeColumn = "N"; // Loại học phần
-        public const string WeekdayColumn = "O"; // Thứ
-        public const string PeriodColumn = "P"; // Tiết
-        public const string RoomColumn = "U"; // Phòng
-        public const string WeekColumn = "Z"; // Tuần
+        public const string SubjectNameColumn = "H"; // Tên học phần
+        public const string SubjectTypeColumn = "M"; // Loại học phần
+        public const string WeekdayColumn = "N"; // Thứ
+        public const string PeriodColumn = "O"; // Tiết
+        public const string RoomColumn = "T"; // Phòng
+        public const string WeekColumn = "Y"; // Tuần
 
         // Patterns
         public const char WeekEmptyValue = '_';
