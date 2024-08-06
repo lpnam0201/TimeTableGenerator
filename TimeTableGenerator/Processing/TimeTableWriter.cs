@@ -1,4 +1,4 @@
-﻿using ClosedXML.Excel;
+using ClosedXML.Excel;
 using TimeTableGenerator.Data;
 
 namespace TimeTableGenerator.Processing
@@ -203,6 +203,11 @@ namespace TimeTableGenerator.Processing
 
         private IList<Occurrence> FilterOccurrenceByDiscussionGroup(IList<Occurrence> occurrences, Options options)
         {
+            if (string.IsNullOrEmpty(options.DiscussionGroup))
+            {
+                return occurrences;
+            }
+            
             return occurrences
                 .Where(x => string.IsNullOrEmpty(x.DiscussionGroup) || x.DiscussionGroup == options.DiscussionGroup)
                 .ToList();
