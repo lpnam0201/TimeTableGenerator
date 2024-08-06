@@ -2,7 +2,7 @@
   "profiles": {
     "TimeTableGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "--FilePath \"C:\\Users\\lpnam\\Desktop\\Khoa-47.xls\" --SheetName \"149-TMQT47\" --GroupPeriods \"True\" --DiscussionGroup \"1\""
+      "commandLineArgs": "--FilePath \"C:\\Users\\nlp\\Desktop\\khoa_47.xls\" --SheetName \" 149-TMQT47 \""
     }
   }
 }
