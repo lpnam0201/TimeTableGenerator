@@ -1,4 +1,4 @@
-﻿using ClosedXML.Excel;
+using ClosedXML.Excel;
 using CommandLine;
 using DocumentFormat.OpenXml.Packaging;
 using ExcelDataReader;
@@ -18,7 +18,7 @@ namespace TimeTableGenerator
             var options = ReadOptions(args);
 
             var sheet = ReadSheet(options);
-            var occurrences = new TimeTableParser().ParseOccurrences(sheet);
+            var occurrences = new TimeTableParser().ParseOccurrences(sheet, options);
 
             new TimeTableWriter().Write("result.xlsx", occurrences, options);
         }
