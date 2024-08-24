@@ -12,5 +12,9 @@ namespace TimeTableGenerator
         public string DiscussionGroup { get; set; }
         [Option("GroupPeriods", Default = false)]
         public bool GroupPeriods { get; set; }
+
+
+        [Option("WriteMode", Default = WriteMode.Excel)]
+        public WriteMode WriteMode {get;set;}
     }
 }
