@@ -3,9 +3,9 @@ using TimeTableGenerator.Data;
 
 namespace TimeTableGenerator.Processing
 {
-    public class TimeTableWriter
+    public class TimeTableWriter : ITimeTableWriter
     {
-        public void Write(string savePath, IList<Occurrence> occurrences, Options options)
+        public void Write(string fileName, IList<Occurrence> occurrences, Options options)
         {
             occurrences = FilterOccurrenceByDiscussionGroup(occurrences, options);
 
@@ -36,7 +36,7 @@ namespace TimeTableGenerator.Processing
                     Paint(worksheet);
                 }
 
-                workbook.SaveAs(savePath);
+                workbook.SaveAs($"{fileName}.xlsx");
             }
         }
 
