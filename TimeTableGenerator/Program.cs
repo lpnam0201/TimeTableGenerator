@@ -20,7 +20,19 @@ namespace TimeTableGenerator
             var sheet = ReadSheet(options);
             var occurrences = new TimeTableParser().ParseOccurrences(sheet, options);
 
-            new TimeTableWriter().Write("result.xlsx", occurrences, options);
+            ITimeTableWriter writer;
+            switch (options.WriteMode)
+            {
+                case WriteMode.Excel:
+                    writer = new TimeTableWriter();
+                    break;
+                case WriteMode.Json:
+                    writer = new JsonTimeTableWriter();
+                    break;
+                default:
+                    throw new NotSupportedException("Unknown write mode");
+            }
+            writer.Write("result", occurrences, options);
         }
 
         private static DataTable ReadSheet(Options options)
