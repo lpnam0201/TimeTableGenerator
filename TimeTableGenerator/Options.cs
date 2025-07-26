@@ -6,7 +6,7 @@ namespace TimeTableGenerator
     {
         [Option("FilePath", Required = true)]
         public string FilePath { get; set; }
-        [Option("SheetName", Required = true)]
+        [Option("SheetName")]
         public string SheetName { get; set; }
         [Option("DiscussionGroup")]
         public string DiscussionGroup { get; set; }
@@ -16,5 +16,7 @@ namespace TimeTableGenerator
 
         [Option("WriteMode", Default = WriteMode.Excel)]
         public WriteMode WriteMode {get;set;}
+        [Option("ProcessAll", Default = false)]
+        public bool IsProcessAll { get; set; }
     }
 }

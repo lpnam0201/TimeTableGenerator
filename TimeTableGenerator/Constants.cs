@@ -53,6 +53,7 @@ namespace TimeTableGenerator
                 ("Thứ Tư", "E"),
                 ("Thứ Năm", "F"),
                 ("Thứ Sáu", "G"),
+                ("Thứ Bảy", "H")
             };
         public const int PeriodRowStart = 3;
         public const char WeekDayColumnStart = 'C';

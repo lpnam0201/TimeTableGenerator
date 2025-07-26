@@ -4,7 +4,7 @@ namespace TimeTableGenerator.Processing
 {
     public interface ITimeTableWriter
     {
-        void Write(string savePath, IList<Occurrence> occurrences, Options options);
+        void Write(string fileName, string directory, IList<Occurrence> occurrences, Options options);
         
     }
 }

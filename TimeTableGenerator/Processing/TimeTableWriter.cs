@@ -5,7 +5,7 @@ namespace TimeTableGenerator.Processing
 {
     public class TimeTableWriter : ITimeTableWriter
     {
-        public void Write(string fileName, IList<Occurrence> occurrences, Options options)
+        public void Write(string fileName, string directory, IList<Occurrence> occurrences, Options options)
         {
             occurrences = FilterOccurrenceByDiscussionGroup(occurrences, options);
 
@@ -36,8 +36,8 @@ namespace TimeTableGenerator.Processing
 
                     Paint(worksheet);
                 }
-
-                workbook.SaveAs($"{fileName}.xlsx");
+                var path = Path.Combine(directory, $"{fileName}.xlsx");
+                workbook.SaveAs(path);
             }
         }
 

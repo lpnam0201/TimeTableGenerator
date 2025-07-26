@@ -8,14 +8,15 @@ namespace TimeTableGenerator.Processing
 {
     public class JsonTimeTableWriter : ITimeTableWriter
     {
-        public void Write(string fileName, IList<Occurrence> occurrences, Options options)
+        public void Write(string fileName, string directory, IList<Occurrence> occurrences, Options options)
         {
             var text = JsonSerializer.Serialize(occurrences, options: new JsonSerializerOptions
             {
                 Encoder = JavaScriptEncoder.Create(UnicodeRanges.All)
             });
 
-            File.WriteAllText($"{fileName}.json", text, Encoding.UTF8);
+            File.WriteAllText(
+                Path.Combine(directory, $"{fileName}.json"), text, Encoding.UTF8);
         }
         
     }
