@@ -16,7 +16,7 @@ namespace TimeTableGenerator
         // Column
         public const string OrdinalNumberColumn = "A"; // Số thứ tự
         public const string SubjectIdColumn = "F"; // Lớp học phần
-        public const string DiscussionGroupColumn = "H"; // Lớp học phần
+        public const string DiscussionGroupColumn = "H"; // Nhóm thảo luận
         public const string SubjectNameColumn = "H"; // Tên học phần
         public const string SubjectTypeColumn = "M"; // Loại học phần
         public const string WeekdayColumn = "N"; // Thứ
@@ -26,7 +26,7 @@ namespace TimeTableGenerator
 
         // Patterns
         public const char WeekEmptyValue = '_';
-        public const char PeriodEmptyValue = '-';
+        public const char PeriodEmptyValue = '_';
 
         // Write
         public static readonly IReadOnlyList<ValueTuple<int, TimeOnly>> PeriodTimes 

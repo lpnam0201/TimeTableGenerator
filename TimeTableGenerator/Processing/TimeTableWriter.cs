@@ -11,7 +11,8 @@ namespace TimeTableGenerator.Processing
 
             using (var workbook = new XLWorkbook())
             {
-                var occurrencesByWeek = occurrences.GroupBy(x => x.Week);
+                var occurrencesByWeek = occurrences.GroupBy(x => x.Week)
+                    .OrderBy(x => x.Key);
 
                 foreach (var grouping in occurrencesByWeek)
                 {
