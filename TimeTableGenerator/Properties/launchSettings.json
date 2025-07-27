@@ -2,7 +2,7 @@
   "profiles": {
     "TimeTableGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "--FilePath \"C:\\Users\\lpnam\\Desktop\\Khoa 47.xls\" --GroupPeriods \"True\" --ProcessAll \"True\""
+      "commandLineArgs": "--FilePath \"C:\\Users\\lpnam\\Desktop\\Khoa 50.xls\" --GroupPeriods \"True\" --ProcessAll \"True\""
     }
   }
 }

@@ -1,0 +1,36 @@
+.student-class-container {
+    color: #bbb;
+    border-radius: 4px 4px 0px 0px;
+    border-color: #eee;
+    border-width: 1px;
+    border-style: solid;
+    margin: 50px;
+    padding: 20px;
+}
+
+.row.student-class-row > * {
+    padding-left: 0px; 
+    padding-right: 0px; 
+}
+
+.result-link-row {
+    display: flex;
+    gap: 3px;
+}
+
+.result-link {
+    flex-grow: 1;
+}
+
+.button {
+    border-width: 0.2px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.button-go {
+    background-color: lightgreen;
+}
+
+.button-copy {
+    background-color: lightskyblue;
+}
