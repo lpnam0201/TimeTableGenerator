@@ -196,3 +196,17 @@ function loadJsonDataToStorage() {
         return items;
     })
 }
+
+function onOpenLinkClicked() {
+    let link = $(ResultTextboxId).val();
+    if (link) {
+        window.open(link, '_blank');
+    }
+}
+
+function onCopyLinkClicked() {
+    let link = $(ResultTextboxId).val();
+    if (link) {
+        navigator.clipboard.writeText(link);
+    }
+}
