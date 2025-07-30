@@ -17,15 +17,40 @@ namespace TimeTableGenerator
             EnsureCodePage1252Registered();
             var options = ReadOptions(args);
 
-            if (options.IsProcessAll)
+            switch (options.ProcessMode)
             {
-                ProcessAll(options);
-            }
-            else
-            {
-                ProcessOne(options);
+                case ProcessMode.One:
+                    ProcessOne(options);
+                    break;
+                case ProcessMode.All:
+                    ProcessAll(options);
+                    break;
+                case ProcessMode.Summer:
+                    ProcessSummer(options);
+                    break;
+                default:
+                    break;
             }
             
+        }
+
+        private static void ProcessSummer(Options options)
+        {
+            if (string.IsNullOrEmpty(options.SummerClasses))
+            {
+                throw new ArgumentNullException("SummerClasses is not specified");
+            }
+
+            var dataTable = ReadDataTable(options);
+            var summerClasses = options.SummerClasses.Split(",");
+            var result = new List<Occurrence>();
+            foreach (var clazz in summerClasses)
+            {
+                var sheet = dataTable[clazz];
+                var occurrences = new TimeTableParser().ParseOccurrences(sheet, options);
+                result.AddRange(occurrences);
+            }
+            WriteResult("result_summer", Directory.GetCurrentDirectory(), result, options);
         }
 
         private static void ProcessAll(Options options)

@@ -13,10 +13,11 @@ namespace TimeTableGenerator
         [Option("GroupPeriods", Default = false)]
         public bool GroupPeriods { get; set; }
 
-
         [Option("WriteMode", Default = WriteMode.Excel)]
         public WriteMode WriteMode {get;set;}
-        [Option("ProcessAll", Default = false)]
-        public bool IsProcessAll { get; set; }
+        [Option("ProcessMode", Default = TimeTableGenerator.ProcessMode.One)]
+        public ProcessMode ProcessMode { get; set; }
+        [Option("SummerClasses")]
+        public string SummerClasses { get; set; }
     }
 }
