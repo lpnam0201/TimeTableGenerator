@@ -1,12 +1,16 @@
-.student-class-container {
-    color: #bbb;
-    border-radius: 4px 4px 0px 0px;
-    border-color: #eee;
-    border-width: 1px;
-    border-style: solid;
-    margin: 50px;
-    padding: 20px;
+@media (min-width: 1200px) {
+    .student-class-container {
+        color: #bbb;
+        border-radius: 4px 4px 0px 0px;
+        border-color: #eee;
+        border-width: 1px;
+        border-style: solid;
+        margin: 50px;
+        padding: 20px;
+    }
 }
+
+
 
 .row.student-class-row > * {
     padding-left: 0px; 

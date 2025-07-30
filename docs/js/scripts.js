@@ -25,7 +25,8 @@ function populateYearCombobox(items) {
 
     $(SelectStudentYearComboboxId)
         .select2({
-            data: yearItems
+            data: yearItems,
+            width: '100%'
         })
         .on('select2:select', (e) => {
             onYearComboboxSelected();
