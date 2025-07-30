@@ -194,8 +194,16 @@ function loadJsonDataToStorage() {
             items.push(...response);
         }
         localStorage.setItem(UlawAutomationDataKey, JSON.stringify(items));
+        enableComboboxes();
         return items;
-    })
+    });
+}
+
+function enableComboboxes() {
+    $(SelectStudentYearComboboxId).prop('disabled', false)
+    $(SelectStudentSemesterComboboxId).prop('disabled', false)
+    $(SelectStudentCourseComboboxId).prop('disabled', false)
+    $(SelectStudentClassComboboxId).prop('disabled', false)
 }
 
 function onOpenLinkClicked() {
@@ -209,5 +217,11 @@ function onCopyLinkClicked() {
     let link = $(ResultTextboxId).val();
     if (link) {
         navigator.clipboard.writeText(link);
+        const toastEl = document.querySelector('.toast');
+        const toast = new bootstrap.Toast(toastEl, {
+            autoHide: true,
+            delay: 400
+        });
+        toast.show();
     }
 }

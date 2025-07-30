@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dịch thời khóa biểu Ulaw</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.7/js/bootstrap.min.js"></script>
     <script src="js/scripts.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
@@ -15,23 +16,23 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="student-class-container col-12 col-xl-4 offset-xl-4">
+            <div class="student-class-container col-12 col-md-6 offset-md-3 col-xl-4 offset-xl-4">
                 <div class="container">
                     <div class="row student-class-row">
                         <label class="">Chọn năm học:</label>
-                        <select id="select-student-year-combobox" class="select-student-year">
+                        <select id="select-student-year-combobox" class="select-student-year" disabled>
                             <option></option>
                         </select>            
                         <label class="">Chọn học kỳ: </label>
-                        <select id="select-student-semester-combobox" class="select-student-semester">
+                        <select id="select-student-semester-combobox" class="select-student-semester" disabled>
                             <option></option>
                         </select>
                         <label class="">Chọn khóa: </label>
-                        <select id="select-student-course-combobox" class="select-student-course">
+                        <select id="select-student-course-combobox" class="select-student-course" disabled>
                             <option></option>
                         </select>
                         <label class="">Chọn lớp: </label>
-                        <select id="select-student-class-combobox" class="select-student-class">
+                        <select id="select-student-class-combobox" class="select-student-class" disabled>
                             <option></option>
                         </select>
                         <label class="">Link tải: </label>
@@ -48,7 +49,12 @@
                         </div>
                     </div>
                 </div>
-                
+                <a class="feedback-link small" href="mailto:lpnam0201@gmail.com">Góp ý: lpnam0201@gmail.com</a> 
+                <div class="toast end-0 position-fixed" role="alert">
+                    <div class="toast-body">
+                        Đã sao chép vào bộ nhớ tạm!
+                    </div>
+                </div>
             </div>
         </div>
     </div>
