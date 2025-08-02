@@ -11,5 +11,6 @@ namespace TimeTableGenerator
         One,
         Summer,
         All,
+        Changed
     }
 }

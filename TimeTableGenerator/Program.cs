@@ -28,10 +28,30 @@ namespace TimeTableGenerator
                 case ProcessMode.Summer:
                     ProcessSummer(options);
                     break;
+                case ProcessMode.Changed:
+                    ProcessChanged(options);
+                    break;
                 default:
                     break;
             }
             
+        }
+
+        private static void ProcessChanged(Options options)
+        {
+            var files = Directory.GetFiles(options.FilePath);
+            foreach (var file in files)
+            {
+                var dataTables = ReadDataTable(file, options);
+                foreach (DataTable sheet in dataTables)
+                {
+                    var sheetName = sheet.TableName;
+                    var occurrences = new TimeTableParser().ParseOccurrences(sheet, options);
+
+                    var resultFolder = Path.Combine(Directory.GetCurrentDirectory(), "results");
+                    WriteResult(sheetName, resultFolder, occurrences, options);
+                }
+            }
         }
 
         private static void ProcessSummer(Options options)
@@ -41,7 +61,7 @@ namespace TimeTableGenerator
                 throw new ArgumentNullException("SummerClasses is not specified");
             }
 
-            var dataTable = ReadDataTable(options);
+            var dataTable = ReadDataTable(options.FilePath, options);
             var summerClasses = options.SummerClasses.Split(",");
             var result = new List<Occurrence>();
             foreach (var clazz in summerClasses)
@@ -55,7 +75,7 @@ namespace TimeTableGenerator
 
         private static void ProcessAll(Options options)
         {
-            var dataTables = ReadDataTable(options);
+            var dataTables = ReadDataTable(options.FilePath, options);
             foreach (DataTable sheet in dataTables)
             {
                 var sheetName = sheet.TableName;
@@ -68,10 +88,10 @@ namespace TimeTableGenerator
 
         }
 
-        private static DataTableCollection ReadDataTable(Options options)
+        private static DataTableCollection ReadDataTable(string filePath, Options options)
         {
             DataTableCollection dataTableCollection;
-            using (var stream = File.Open(options.FilePath, FileMode.Open, FileAccess.Read))
+            using (var stream = File.Open(filePath, FileMode.Open, FileAccess.Read))
             {
                 using (var reader = ExcelReaderFactory.CreateReader(stream))
                 {
@@ -85,7 +105,7 @@ namespace TimeTableGenerator
 
         private static void ProcessOne(Options options)
         {
-            var dataTable = ReadDataTable(options);
+            var dataTable = ReadDataTable(options.FilePath, options);
             var sheet = dataTable[options.SheetName];
             var occurrences = new TimeTableParser().ParseOccurrences(sheet, options);
 
