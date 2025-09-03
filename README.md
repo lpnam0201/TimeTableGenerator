@@ -1,6 +1,7 @@
 # TimeTableGenerator
 
 Tool giúp dịch thời khóa biểu SV ĐH Luật HCM.
+Bản web ở đây: https://lpnam0201.github.io/TimeTableGenerator/
 
 # Cách sử dụng
 Link tải: 
