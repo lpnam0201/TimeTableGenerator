@@ -113,7 +113,7 @@ namespace TimeTableGenerator.Processing
 
             var weekdayNumbers = new List<ValueTuple<string, char>>();
             var weekdayNameStart = 2;
-            for (var i = 0; i <= 4; i++)
+            for (var i = 0; i <= 5; i++)
             {
                 var weekdayName = (weekdayNameStart + i).ToString();
                 var weekdayColumn = (char)(Constants.WeekDayColumnStart + i);
