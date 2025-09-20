@@ -16,7 +16,7 @@ namespace TimeTableGenerator.Processing
             var occurrences = new List<Occurrence>();
 
             var lastDataRow = FindLastDataRow(sheet);
-            for (int i = Constants.DataStartRow.ToArrayIndex(); i <= lastDataRow; i++)
+            for (int i = FindDataStartRow(sheet); i <= lastDataRow; i++)
             {
                 var row = sheet.Rows[i];
                 var occurrenceOfRow = ParseRowOccurrences(row, options);
@@ -24,6 +24,22 @@ namespace TimeTableGenerator.Processing
             }
 
             return occurrences;
+        }
+
+        private int FindDataStartRow(DataTable sheet)
+        {
+            var i = 0;
+            do
+            {
+                var index = 1 + i;
+                var dataRow = sheet.Rows[index];
+                var ordinalNumber = dataRow.ItemArray.GetCellValue(Constants.OrdinalNumberColumn);
+                if (ordinalNumber.ToString() == "1")
+                {
+                    return index;
+                }
+                i++;
+            } while (true);
         }
 
         private IList<Occurrence> ParseRowOccurrences(DataRow row, Options options)
@@ -78,19 +94,25 @@ namespace TimeTableGenerator.Processing
 
         private int FindLastDataRow(DataTable sheet)
         {
-            var index = Constants.DataStartRow.ToArrayIndex();
+            var index = 0;
             string ordinalNumberValue = null;
+            string nextRowValue = null;
 
             do
             {
                 var cellIndex = Utils.ExcelColumnToIndex(Constants.OrdinalNumberColumn).ToArrayIndex();
                 ordinalNumberValue = sheet.Rows[index].ItemArray[cellIndex].ToString();
+                nextRowValue = sheet.Rows[index + 1].ItemArray[cellIndex].ToString();
 
+                // Current cell is number but next row is not -> exit
+                if (int.TryParse(ordinalNumberValue, out _) && !int.TryParse(nextRowValue, out _))
+                {
+                    break;
+                }
                 index++;
-            } while (!string.IsNullOrEmpty(ordinalNumberValue));
+            } while (true);
 
-            var lastIndexWithData = index - 1;
-            return lastIndexWithData;
+            return index;
         }
     }
 }

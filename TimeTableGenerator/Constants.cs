@@ -10,8 +10,6 @@ namespace TimeTableGenerator
     // Later code will convert to base-0 array index
     internal class Constants
     {
-        // Row (Excel starts at 1)
-        public const int DataStartRow = 14;
 
         // Column
         public const string OrdinalNumberColumn = "A"; // Số thứ tự
