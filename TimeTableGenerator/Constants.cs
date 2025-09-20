@@ -13,14 +13,25 @@ namespace TimeTableGenerator
 
         // Column
         public const string OrdinalNumberColumn = "A"; // Số thứ tự
-        public const string SubjectIdColumn = "F"; // Lớp học phần
-        public const string DiscussionGroupColumn = "H"; // Nhóm thảo luận
-        public const string SubjectNameColumn = "H"; // Tên học phần
-        public const string SubjectTypeColumn = "M"; // Loại học phần
-        public const string WeekdayColumn = "N"; // Thứ
-        public const string PeriodColumn = "O"; // Tiết
-        public const string RoomColumn = "T"; // Phòng
-        public const string WeekColumn = "Y"; // Tuần
+
+        public const string SubjectId = "Lớp học phần";
+        public const string SubjectName = "Tên học phần"; 
+        public const string SubjectType = "Loại HP";
+        public const string Weekday = "Thứ";
+        public const string Period = "Tiết";
+        public const string Room = "Phòng";
+        public const string Week = "Tuần học";
+
+        public static IList<string> Headers = new List<string>
+        {
+            SubjectId,
+            SubjectName,
+            SubjectType,
+            Weekday,
+            Period,
+            Room,
+            Week
+        };
 
         // Patterns
         public const char WeekEmptyValue = '_';

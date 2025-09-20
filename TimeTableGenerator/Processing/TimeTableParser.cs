@@ -1,3 +1,4 @@
+using DocumentFormat.OpenXml.Spreadsheet;
 using ExcelDataReader;
 using System;
 using System.Collections.Generic;
@@ -16,14 +17,37 @@ namespace TimeTableGenerator.Processing
             var occurrences = new List<Occurrence>();
 
             var lastDataRow = FindLastDataRow(sheet);
+            var dataStartRow = FindDataStartRow(sheet);
+            var headerLookUp = BuildHeaderLookUp(sheet, dataStartRow);
             for (int i = FindDataStartRow(sheet); i <= lastDataRow; i++)
             {
                 var row = sheet.Rows[i];
-                var occurrenceOfRow = ParseRowOccurrences(row, options);
+                var occurrenceOfRow = ParseRowOccurrences(row, headerLookUp, options);
                 occurrences.AddRange(occurrenceOfRow);
             }
 
             return occurrences;
+        }
+
+        private IDictionary<string, string> BuildHeaderLookUp(DataTable sheet, int dataStartRow)
+        {
+            var lookup = new Dictionary<string, string>();
+            var headerRow = dataStartRow - 1;
+            var row = sheet.Rows[headerRow];
+            var columnNames = Enumerable.Range('A', 'Z' - 'A' + 1)
+                .Select(x => ((char)x).ToString());
+            foreach (var column in columnNames)
+            {
+                var headerValue = row.ItemArray.GetCellValue(column).ToString();
+                var matchedHeader = Constants.Headers.FirstOrDefault(x => headerValue.Contains(x));
+
+                if (!string.IsNullOrEmpty(headerValue) && matchedHeader != null)
+                {
+                    lookup.Add(matchedHeader, column);
+                }    
+            }
+
+            return lookup;
         }
 
         private int FindDataStartRow(DataTable sheet)
@@ -42,20 +66,24 @@ namespace TimeTableGenerator.Processing
             } while (true);
         }
 
-        private IList<Occurrence> ParseRowOccurrences(DataRow row, Options options)
+        private IList<Occurrence> ParseRowOccurrences(DataRow row, IDictionary<string, string> headerLookup, Options options)
         {
             var occurrences = new List<Occurrence>();
 
-            var subjectId = row.ItemArray.GetCellValue(Constants.SubjectIdColumn).ToString();
-            var subjectName = row.ItemArray.GetCellValue(Constants.SubjectNameColumn).ToString();
-            var subjectType = row.ItemArray.GetCellValue(Constants.SubjectTypeColumn).ToString();
-            var room = row.ItemArray.GetCellValue(Constants.RoomColumn).ToString();
-            var discussionGroup = !string.IsNullOrEmpty(options.DiscussionGroup)
-                ? row.ItemArray.GetCellValue(Constants.DiscussionGroupColumn).ToString()
-                : null;
-            var weekday = row.ItemArray.GetCellValue(Constants.WeekdayColumn).ToString();
-            string periodsPattern = row.ItemArray.GetCellValue(Constants.PeriodColumn).ToString();
-            string weeksPattern = row.ItemArray.GetCellValue(Constants.WeekColumn).ToString();
+            var subjectId = row.ItemArray.GetCellValue(
+                headerLookup[Constants.SubjectId]).ToString();
+            var subjectName = row.ItemArray.GetCellValue(
+                headerLookup[Constants.SubjectName]).ToString();
+            var subjectType = row.ItemArray.GetCellValue(
+                headerLookup[Constants.SubjectType]).ToString();
+            var room = row.ItemArray.GetCellValue(
+                headerLookup[Constants.Room]).ToString();
+            var weekday = row.ItemArray.GetCellValue(
+                headerLookup[Constants.Weekday]).ToString();
+            string periodsPattern = row.ItemArray.GetCellValue(
+                headerLookup[Constants.Period]).ToString();
+            string weeksPattern = row.ItemArray.GetCellValue(
+                headerLookup[Constants.Week]).ToString();
 
             var weeks = ParseWeeks(weeksPattern);
             var periods = ParsePeriods(periodsPattern);
@@ -69,7 +97,6 @@ namespace TimeTableGenerator.Processing
                         SubjectName = subjectName,
                         SubjectType = subjectType,
                         Room = room,
-                        DiscussionGroup = discussionGroup,
                         Weekday = weekday,
                         Period = period,
                         Week = week,
