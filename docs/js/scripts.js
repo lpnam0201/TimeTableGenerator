@@ -179,7 +179,12 @@ function loadJsonDataToStorage() {
         "ulaw_automation_khoa47_20252026_hk1.json",
         "ulaw_automation_khoa48_20252026_hk1.json",
         "ulaw_automation_khoa49_20252026_hk1.json",
-        "ulaw_automation_khoa50_20252026_hk1.json"
+        "ulaw_automation_khoa50_20252026_hk1.json",
+        "ulaw_automation_khoa46_20252026_hk2.json",
+        "ulaw_automation_khoa47_20252026_hk2.json",
+        "ulaw_automation_khoa48_20252026_hk2.json",
+        "ulaw_automation_khoa49_20252026_hk2.json",
+        "ulaw_automation_khoa50_20252026_hk2.json"
     ];
     let loadDataPromises = [];
     for (let dataFileName of dataFileNames) {
