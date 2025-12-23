@@ -2,7 +2,7 @@
   "profiles": {
     "TimeTableGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "--FilePath \"C:\\Users\\lpnam\\Desktop\\clc_k50.xls\" --GroupPeriods \"True\" --ProcessMode \"All\""
+      "commandLineArgs": "--FilePath \"C:\\Users\\lpnam\\Desktop\\Chinh quy-20251223T140638Z-3-001\\Chinh quy\\Khoa 50.xls\" --GroupPeriods \"True\" --ProcessMode \"All\""
     }
   }
 }
