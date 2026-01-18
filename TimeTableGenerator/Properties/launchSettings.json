@@ -2,7 +2,7 @@
   "profiles": {
     "TimeTableGenerator": {
       "commandName": "Project",
-      "commandLineArgs": "--FilePath \"C:\\Users\\lpnam\\Desktop\\clc_k50.xls\" --GroupPeriods \"True\" --ProcessMode \"All\""
+      "commandLineArgs": "--FilePath \"C:\\Users\\nlp\\Desktop\\khoa_47_fx.xlsx\" --GroupPeriods \"True\" --ProcessMode \"One\" --SheetName \"149-Luật TMQT47\" --WriteMode \"Json\""
     }
   }
 }

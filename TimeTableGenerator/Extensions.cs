@@ -16,6 +16,10 @@ namespace TimeTableGenerator
         public static object GetCellValue(this object?[] itemArray, string columnName)
         {
             var excelIndex = Utils.ExcelColumnToIndex(columnName);
+            if (excelIndex.ToArrayIndex() >= itemArray.Length)
+            {
+                return null;
+            }
             return itemArray[excelIndex.ToArrayIndex()];
         }
 

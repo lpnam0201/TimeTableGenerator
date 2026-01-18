@@ -38,7 +38,11 @@ namespace TimeTableGenerator.Processing
                 .Select(x => ((char)x).ToString());
             foreach (var column in columnNames)
             {
-                var headerValue = row.ItemArray.GetCellValue(column).ToString();
+                var headerValue = row.ItemArray.GetCellValue(column)?.ToString();
+                if (headerValue == null)
+                {
+                    continue;
+                }
                 var matchedHeader = Constants.Headers.FirstOrDefault(x => headerValue.Contains(x));
 
                 if (!string.IsNullOrEmpty(headerValue) && matchedHeader != null)
